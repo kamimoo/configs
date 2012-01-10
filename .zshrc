@@ -92,3 +92,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PIP_RESPECT_VIRTUALENV=true
 source /usr/local/bin/virtualenvwrapper.sh
 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
