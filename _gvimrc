@@ -6,7 +6,11 @@
 if has('gui_macvim')
   set transparency=10
   set guifont=Osaka-Mono:h16
-  set lines=90 columns=150
-  set guioptions-=T
 endif
+if has('unix')
+  set guifont=Ricty\ 12
+endif
+
+set lines=90 columns=150
+set guioptions-=T
 colorscheme ChocolateLiquor
