@@ -6,8 +6,7 @@
 if has('gui_macvim')
   set transparency=10
   set guifont=Osaka-Mono:h16
-endif
-if has('unix')
+elseif has('unix')
   set guifont=Ricty\ 12
 endif
 
