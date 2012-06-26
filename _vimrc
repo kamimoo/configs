@@ -115,23 +115,23 @@ endif
 
 "---------------------------------------------------------------------------
 " コンソールでのカラー表示のための設定(暫定的にUNIX専用)
-if has('unix') && !has('gui_running')
-  let uname = system('uname')
-  if uname =~? "linux"
-    set term=builtin_linux
-  elseif uname =~? "freebsd"
-    set term=builtin_cons25
-  elseif uname =~? "Darwin"
-    set term=beos-ansi
-  else
-    set term=builtin_xterm
-  endif
-  unlet uname
-endif
+"if has('unix') && !has('gui_running')
+"  let uname = system('uname')
+"  if uname =~? "linux"
+"    set term=builtin_linux
+"  elseif uname =~? "freebsd"
+"    set term=builtin_cons25
+"  elseif uname =~? "Darwin"
+"    set term=beos-ansi
+"  else
+"    set term=builtin_xterm
+"  endif
+"  unlet uname
+"endif
 
 " 画面を256色にする
 set t_Co=256
-colorscheme ChocolateLiquor
+"colorscheme ChocolateLiquor
 
 "---------------------------------------------------------------------------
 " ファイルタイプごとの設定
@@ -196,3 +196,16 @@ let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]{%p}", "(%s)-[%b|%a]%p")'
 let g:vimshell_prompt = '% '
 let g:vimshell_enable_auto_slash = 1
 
+let g:Powerline_symbols = 'fancy'
+
+"---------------------------------------------------------------------------
+" skk
+map! <C-j> <Plug>(skk-toggle-im)
+let g:skk_large_jisyo = expand('~/skk/SKK-JISYO.L')
+let g:skk_egg_like_newline = 1
+
+"---------------------------------------------------------------------------
+" vim-javascript
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
