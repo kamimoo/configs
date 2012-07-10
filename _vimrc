@@ -44,6 +44,9 @@ set incsearch
 if has("migemo")
   set migemo
 endif
+
+:source $VIMRUNTIME/macros/matchit.vim
+
 "---------------------------------------------------------------------------
 " 編集に関する設定:
 "
