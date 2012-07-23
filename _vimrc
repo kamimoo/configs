@@ -161,9 +161,51 @@ let php_noShortTags=1
 
 "---------------------------------------------------------------------------
 "" neocomplcache
+" 補完ウィンドウの設定
+let completeopt=menuone
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_ignore_case = 1
+" カーソルより後のキーワードパターンを認識
+if !exists('g:neocomplcache_next_keyword_patterns')
+  let g:neocomplcache_next_keyword_patterns = {}
+endif
+
+" スニペット補完
+"let g:neocomplcache_snippets_disable_runtime_snippets = 1
+" スニペットファイルの置き場所
+let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
+
+" 改行で補完ウィンドウを閉じる
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
+"tabで補完候補の選択を行う
+noremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
+"C-h, BSで補完ウィンドウを確実に閉じる
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<BS>"
+"C-yで補完候補の確定
+inoremap <expr><C-y> neocomplcache#close_popup()
+"C-eで補完のキャンセルし、ウィンドウを閉じる。ポップアップが開いていないときはEndキー
+inoremap <expr><C-e> pumvisible() ? neocomplcache#cancel_popup() : "\<End>"
+"C-gで補完を元に戻す
+inoremap <expr><C-g> neocomplcache#undo_completion()
+"vim標準のキーワード補完を置き換える
+inoremap <expr><C-n> neocomplcache#manual_keyword_complete()
+"C-pで上キー
+inoremap <C-p> <Up>
+"補完候補の共通文字列を補完する(シェル補完のような動作)
+inoremap <expr><C-l> neocomplcache#complete_common_string()
+"スニペットを展開する。スニペットが関係しないところでは行末まで削除
+imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+"オムニ補完の手動呼び出し
+inoremap <expr><C-Space> neocomplcache#manual_omni_complete()
+
+"スニペットファイルを編集する
+nnoremap <Space>nes :NeoComplCacheEditSnippets
 
 "---------------------------------------------------------------------------
 " 関数
@@ -202,10 +244,11 @@ let g:vimshell_enable_auto_slash = 1
 let g:Powerline_symbols = 'fancy'
 
 "---------------------------------------------------------------------------
-" skk
+" eskk
 map! <C-j> <Plug>(skk-toggle-im)
-let g:skk_large_jisyo = expand('~/skk/SKK-JISYO.L')
-let g:skk_egg_like_newline = 1
+let g:eskk#large_dictionary = expand('~/skk/SKK-JISYO.L')
+let g:eskk#egg_like_newline = 1
+let g:eskk#show_candidates_count = 1
 
 "---------------------------------------------------------------------------
 " vim-javascript
