@@ -7,22 +7,24 @@ scriptencoding utf-8
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+  set rtp+=~/.vim/bundles/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundles'))
+endif
 
 filetype plugin indent on
 
 " 1.bundles.vimでプラグインのリストを管理
-" " 2.EditBundlesでこのリストの編集を開始
-" " 3.リストを保存することでg:bundlesを更新してBundleCleanする
-let $bundles_file=$HOME.'/configs/dot.vim/bundles.vim'
+" 2.EditBundlesでこのリストの編集を開始
+" 3.リストを保存することでg:bundlesを更新してBundleCleanする
+let $bundles_file=$HOME.'/configs/dot.vim/NeoBundle.vim'
 com! EditBundles :e $bundles_file
 
-augroup Vundle
-  au BufWritePost $bundles_file call vundle#config#init()
+augroup NeoBundle
+  au BufWritePost $bundles_file call neobundle#config#init()
   au BufWritePost $bundles_file source $bundles_file
-  au BufWritePost $bundles_file BundleClean
-  au BufWritePost $bundles_file BundleInstall
+  au BufWritePost $bundles_file NeoBundleClean
+  au BufWritePost $bundles_file NeoBundleInstall
 augroup END
 
 source $bundles_file
@@ -97,6 +99,15 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%y%=%l,%c
 " シンタックスハイライト
 syntax on
 
+" CJKの曖昧幅文字の幅を全角にする
+set ambiwidth=double
+
+if !has('gui_running')
+  set notimeout
+  set ttimeout
+  set timeoutlen=100
+endif
+
 
 "---------------------------------------------------------------------------
 " ファイル操作に関する設定:
@@ -134,7 +145,7 @@ endif
 
 " 画面を256色にする
 set t_Co=256
-"colorscheme ChocolateLiquor
+colorscheme xoria256
 
 "---------------------------------------------------------------------------
 " ファイルタイプごとの設定
@@ -153,6 +164,8 @@ endif
 augroup filetypedetect
   au BufNewFile,BufRead *.json setf javascript
   au BufNewFile,BufRead *.ml setlocal ft=omlet
+  au BufNewFile,BufRead *.mobile.erb let b:eruby_subtype='html'
+  au BufNewFile,BufRead *.mobile.erb set filetype=eruby
 augroup end
 
 let php_sql_query=1
@@ -162,7 +175,7 @@ let php_noShortTags=1
 "---------------------------------------------------------------------------
 "" neocomplcache
 " 補完ウィンドウの設定
-let completeopt=menuone
+"let completeopt=preview,menuone
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
@@ -245,10 +258,17 @@ let g:Powerline_symbols = 'fancy'
 
 "---------------------------------------------------------------------------
 " eskk
+"map! <C-j> <Plug>(skk-toggle-im)
+"let g:eskk#large_dictionary = expand('~/skk/SKK-JISYO.L')
+"let g:eskk#egg_like_newline = 1
+"let g:eskk#show_candidates_count = 0
+
+"---------------------------------------------------------------------------
+" skk
 map! <C-j> <Plug>(skk-toggle-im)
-let g:eskk#large_dictionary = expand('~/skk/SKK-JISYO.L')
-let g:eskk#egg_like_newline = 1
-let g:eskk#show_candidates_count = 1
+let g:skk_large_jisyo = expand('~/skk/SKK-JISYO.L')
+let g:skk_egg_like_newline = 1
+
 
 "---------------------------------------------------------------------------
 " vim-javascript
