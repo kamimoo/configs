@@ -73,7 +73,8 @@ bindkey -v
 # completion
 autoload -U compinit
 compinit
-eval `dircolors`
+[[ -x "`which gdircolors`" ]] && eval `gdircolors`
+[[ -x "`which dircolors`" ]] && eval `dircolors`
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 zstyle ':completion:*:default' menu select=2
 
@@ -118,13 +119,4 @@ alias la="ls -lhF"
 alias grep='grep --color=auto'
 
 # functions
-
-# python
-# virtualenvのルートディレクトリ
-export WORKON_HOME=$HOME/.virtualenvs
-export PIP_RESPECT_VIRTUALENV=true
-[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source /usr/local/bin/virtualenvwrapper.sh
-
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 

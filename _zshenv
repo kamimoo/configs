@@ -1,0 +1,31 @@
+## vim:ft=zsh
+
+# 重複したパスを登録しない
+typeset -U path
+export PATH="/usr/local/bin:$PATH"
+
+# python
+# virtualenvのルートディレクトリ
+export WORKON_HOME=$HOME/.virtualenvs
+export PIP_RESPECT_VIRTUALENV=true
+[[ -s "/usr/local/bin/virtualenvwrapper.sh" ]] && source /usr/local/bin/virtualenvwrapper.sh
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# rbenv
+if [ -e $HOME/.rbenv ]; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+fi
+
+# haxe
+if [ -x "`which haxe`" ]; then
+	export HAXE_LIBRARY_PATH="/usr/lib/haxe/std"
+fi
+
+# node
+if [ -e $HOME/.nodebrew ]; then
+	export PATH=$HOME/.nodebrew/current/bin:$PATH
+fi
+export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
