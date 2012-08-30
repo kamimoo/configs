@@ -4,12 +4,14 @@
 "---------------------------------------------------------------------------
 
 if has('gui_macvim')
+  set imdisable
   set transparency=10
   set guifont=Osaka-Mono:h16
-  set imdisable
 elseif has('unix')
   set guifont=Ricty\ for\ Powerline\ 12
 endif
 
 set lines=90 columns=150
 set guioptions-=T
+set guitablabel=%t
+colorscheme xoria256

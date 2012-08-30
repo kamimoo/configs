@@ -3,16 +3,16 @@
 
 "---------------------------------------------------------------------------
 scriptencoding utf-8
-"" vundle
+"" neobundle
 set nocompatible
 filetype off
+filetype plugin indent off
 
 if has('vim_starting')
   set rtp+=~/.vim/bundles/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundles'))
 endif
+call neobundle#rc(expand('~/.vim/bundles'))
 
-filetype plugin indent on
 
 " 1.bundles.vimでプラグインのリストを管理
 " 2.EditBundlesでこのリストの編集を開始
@@ -28,6 +28,7 @@ augroup NeoBundle
 augroup END
 
 source $bundles_file
+filetype plugin indent on
 
 "---------------------------------------------------------------------------
 " 検索の挙動に関する設定:
@@ -148,6 +149,16 @@ set t_Co=256
 colorscheme xoria256
 
 "---------------------------------------------------------------------------
+" キー設定
+
+" タブ切り替え
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+
+" PASTEモードトグル
+nnoremap <Space>tp :<C-u>set paste!<CR>
+
+"---------------------------------------------------------------------------
 " ファイルタイプごとの設定
 if has("autocmd")
   autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
@@ -158,6 +169,11 @@ if has("autocmd")
   autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
   autocmd FileType c,css,html,smarty,javascript,xml,ruby,vim,cucumber setlocal tabstop=2 shiftwidth=2 expandtab autoindent smartindent
   autocmd FileType php,lua setlocal tabstop=4 shiftwidth=4 expandtab autoindent smartindent
+  autocmd FileType haxe setlocal sta tabstop=4 shiftwidth=4 expandtab autoindent smartindent
+  autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 0
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
   autocmd BufWritePost *.php :call PHPLint()
 endif
 
@@ -220,6 +236,13 @@ inoremap <expr><C-Space> neocomplcache#manual_omni_complete()
 "スニペットファイルを編集する
 nnoremap <Space>nes :NeoComplCacheEditSnippets
 
+" Enable heavy omni completion
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.haxe = '\v([\]''"]|\w)(\.|\()'
+"let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
 "---------------------------------------------------------------------------
 " 関数
 
@@ -258,16 +281,16 @@ let g:Powerline_symbols = 'fancy'
 
 "---------------------------------------------------------------------------
 " eskk
-"map! <C-j> <Plug>(skk-toggle-im)
-"let g:eskk#large_dictionary = expand('~/skk/SKK-JISYO.L')
-"let g:eskk#egg_like_newline = 1
-"let g:eskk#show_candidates_count = 0
+map! <C-j> <Plug>(skk-toggle-im)
+let g:eskk#large_dictionary = expand('~/skk/SKK-JISYO.L')
+let g:eskk#egg_like_newline = 1
+let g:eskk#show_candidates_count = 0
 
 "---------------------------------------------------------------------------
 " skk
-map! <C-j> <Plug>(skk-toggle-im)
-let g:skk_large_jisyo = expand('~/skk/SKK-JISYO.L')
-let g:skk_egg_like_newline = 1
+"map! <C-j> <Plug>(skk-toggle-im)
+"let g:skk_large_jisyo = expand('~/skk/SKK-JISYO.L')
+"let g:skk_egg_like_newline = 1
 
 
 "---------------------------------------------------------------------------
@@ -275,3 +298,4 @@ let g:skk_egg_like_newline = 1
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
