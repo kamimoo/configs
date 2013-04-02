@@ -302,3 +302,18 @@ let g:html_indent_style1 = "inc"
 "---------------------------------------------------------------------------
 " tagbar
 nmap <F8> :TagbarToggle<CR>
+
+
+"---------------------------------------------------------------------------
+" syntastic
+let g:syntastic_mode_map = { 'mode': 'active',
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['html'] }
+
+"---------------------------------------------------------------------------
+" riv
+let uname = system('uname')
+if uname =~? "Darwin"
+  let g:riv_web_browser = "open -a Firefox"
+endif
+let g:riv_html_code_hl_style = "friendly"
