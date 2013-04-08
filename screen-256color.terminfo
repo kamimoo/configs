@@ -1,0 +1,2 @@
+screen-256color|GNU Screen with 256 colors,
+       use=xterm-256color,
