@@ -5,6 +5,7 @@ typeset -U path
 export PATH="/usr/local/bin:$PATH"
 
 # python
+export PATH="/usr/local/share/python:$PATH"
 # virtualenvのルートディレクトリ
 export WORKON_HOME=$HOME/.virtualenvs
 export PIP_RESPECT_VIRTUALENV=true
@@ -13,10 +14,21 @@ export PIP_RESPECT_VIRTUALENV=true
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# haskell
+if [ -s "$HOME/.cabal" ]; then
+	export PATH="$HOME/.cabal/bin:$PATH"
+fi
+
 # rbenv
 if [ -e $HOME/.rbenv ]; then
-	export PATH="$HOME/.rbenv/bin:$PATH"
+	export PATH="$HOME/.rbenv/shims:$PATH"
 	eval "$(rbenv init -)"
+fi
+
+# phpenv
+if [ -e $HOME/.phpenv ]; then
+	export PATH="$HOME/.phpenv/bin:$PATH"
+	eval "$(phpenv init -)"
 fi
 
 # haxe
@@ -29,3 +41,12 @@ if [ -e $HOME/.nodebrew ]; then
 	export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 export NODE_PATH=/usr/local/lib/jsctags/:$NODE_PATH
+
+#android
+if [ -e $HOME/android-sdk ]; then
+	export ANDROID_HOME=$HOME/android-sdk
+	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
+
+#gvm
+[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"

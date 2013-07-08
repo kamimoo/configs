@@ -117,6 +117,10 @@ esac
 
 alias la="ls -lhF"
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # functions
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/kamimoo/.gvm/bin/gvm-init.sh" ]] && source "/Users/kamimoo/.gvm/bin/gvm-init.sh"
