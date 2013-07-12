@@ -50,3 +50,13 @@ fi
 
 #gvm
 [[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+
+
+#java
+case $(uname) in
+	*BSD|Darwin)
+		export JAVA_OPTS='-Dfile.encoding=UTF-8 -Dgroovy.source.encoding=UTF-8'
+		;;
+	*)
+		;;
+esac
