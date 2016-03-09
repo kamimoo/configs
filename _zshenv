@@ -48,8 +48,8 @@ if [ -e $HOME/android-sdk ]; then
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
-#gvm
-[[ -s "$HOME/.gvm/bin/gvm-init.sh" ]] && source "$HOME/.gvm/bin/gvm-init.sh"
+#sdkman
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 
 #java
