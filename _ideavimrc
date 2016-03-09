@@ -1,0 +1,19 @@
+set ignorecase
+set smartcase
+set hlsearch
+
+" Navigation
+nnoremap mm :action MethodDown<CR>
+nnoremap MM :action MethodUp<CR>
+
+" Toggle git-blame
+nnoremap ,g :action Annotate<CR>
+
+" Find text in path
+nnoremap ,f :action FindInPath<CR>
+
+" Run
+nnoremap ,r :action Run<CR>
+
+" Sync project with gradle files
+nnoremap ,s :action Android.SyncProject<CR>
