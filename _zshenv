@@ -56,6 +56,10 @@ fi
 case $(uname) in
 	*BSD|Darwin)
 		export JAVA_OPTS='-Dfile.encoding=UTF-8 -Dgroovy.source.encoding=UTF-8'
+		JAVA8_HOME=`/usr/libexec/java_home -v "1.8" -F`
+		if [ $? -eq 0 ]; then
+			export JAVA8_HOME
+		fi
 		;;
 	*)
 		;;
