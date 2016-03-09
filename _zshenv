@@ -51,6 +51,12 @@ fi
 #sdkman
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+#gradle
+if [ -e $HOME/.sdkman/gradle/current ]; then
+	export GRADLE_HOME=$HOME/.sdkman/candidates/gradle/current
+fi
+
+#
 
 #java
 case $(uname) in
