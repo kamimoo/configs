@@ -1,5 +1,8 @@
 ## vim:ft=zsh
 
+# Do not read /etc/*
+setopt no_global_rcs
+
 # 重複したパスを登録しない
 typeset -U path
 export PATH="/usr/local/bin:$PATH"
