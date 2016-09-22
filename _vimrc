@@ -3,6 +3,7 @@
 
 "---------------------------------------------------------------------------
 scriptencoding utf-8
+set shell=/bin/bash
 "" neobundle
 set nocompatible
 filetype off
