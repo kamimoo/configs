@@ -15,7 +15,11 @@ set -x HOMEBREW_CASK_OPTS '--appdir=/Applications'
 set -x HOMEBREW_NO_ANALYTICS 1
 
 # direnv
-eval (direnv hook fish)
+if test -x direnv
+	eval (direnv hook fish)
+end
 
 # nodenv
-status --is-interactive; and source (nodenv init -|psub)
+if test -x nodenv
+	status --is-interactive; and source (nodenv init -|psub)
+end
