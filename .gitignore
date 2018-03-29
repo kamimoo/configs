@@ -8,3 +8,7 @@ tmp/**/*
 tmp/*
 .DS_Store
 Thumbs.db
+fish/completions/
+fish/functions/
+fish/conf.d/
+fish/fishd*
