@@ -1,0 +1,46 @@
+// 既定の設定を上書きするには、このファイル内に設定を挿入します
+{
+  "auto-close-tag.SublimeText3Mode": true,
+  "editor.fontFamily": "Cica-Regular",
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.otherModesKeyBindingsNonRecursive": [{
+    "before": [
+      "="
+    ],
+    "after": [],
+    "commands": [{
+      "command": "editor.action.formatSelection",
+      "args": []
+    }]
+  }],
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[python]": {
+    "editor.tabSize": 4
+  },
+  "python.linting.pylintPath": "/usr/local/bin/pylint",
+  "window.zoomLevel": 0,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.showTabs": false,
+  "workbench.sideBar.location": "left",
+  "editor.minimap.enabled": false,
+  "editor.formatOnType": false,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.alwaysShowStatus": true,
+  "eslint.packageManager": "yarn",
+  "editor.formatOnSave": true,
+  "typescript.surveys.enabled": false,
+  "breadcrumbs.enabled": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.jediEnabled": false
+}
