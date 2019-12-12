@@ -1,2 +1,3 @@
-EXCLUDES="dot.vim screen-256color.terminfo"
+EXCLUDES="dot.vim"
+UNDOTTED="screen-256color.terminfo"
 
