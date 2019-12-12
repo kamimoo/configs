@@ -15,8 +15,9 @@ if test -e $HOME/Library/Android/sdk
 	set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools
 end
 
-if test -e $HOME/.nodebrew
-	set -x PATH $PATH $HOME/.nodebrew/current/bin
+# flutter
+if test -e $HOME/Library/flutter
+	set -x PATH $PATH $HOME/Library/flutter/bin
 end
 
 # Homebrew
@@ -31,4 +32,11 @@ end
 # nodenv
 if test -x /usr/local/bin/nodenv
 	status --is-interactive; and source (nodenv init -|psub)
+	set -x PATH $PATH $HOME/.nodenv/shims
+end
+
+# Go
+if test -x $HOME/go
+	set -x GOPATH $HOME/go
+	set -x PATH $PATH $GOPATH/bin
 end
