@@ -1,0 +1,12 @@
+# vim: set noexpandtab ts=4 sw=4 sts=4 :
+[user]
+	name = kamimoo
+	email = arcobaleno7+git@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = auto
+[log]
+	date = iso
+[commit]
+	verbose = true
