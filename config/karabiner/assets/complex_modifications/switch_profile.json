@@ -1,0 +1,48 @@
+{
+  "title": "switch_profile",
+  "rules": [
+    {
+      "description": "switch_profile",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "type": "keyboard_type_if",
+              "keyboard_types": [
+                "jis"
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "f3"
+          },
+          "to": [
+            {
+              "shell_command": "'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile 'ANSI'"
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "type": "keyboard_type_if",
+              "keyboard_types": [
+                "ansi"
+              ]
+            }
+          ],
+          "type": "basic",
+          "from": {
+            "key_code": "f3"
+          },
+          "to": [
+            {
+              "shell_command": "'/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli' --select-profile 'Default profile'"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
