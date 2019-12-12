@@ -1,0 +1,2 @@
+EXCLUDES="dot.vim screen-256color.terminfo"
+
