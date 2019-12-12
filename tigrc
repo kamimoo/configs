@@ -1,0 +1,26 @@
+set vertical-split = no
+set split-view-height = 80%
+set line-graphics = utf-8
+set tab-size = 4
+set ignore-case = yes
+set ignore-space = at-eol
+set main-view = id date author:email-user commit-title:graph=yes,refs=yes
+set blame-view = date:default author:email-user id:yes,color line-number:yes,interval=1
+
+set pager-view = line-number:yes,interval=1 text
+set stage-view = line-number:yes,interval=1 text
+set log-view = line-number:yes,interval=1 text
+set blob-view = line-number:yes,interval=1 text
+set diff-view = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+set refresh-mode = auto
+
+bind generic G none
+bind generic g move-first-line
+bind generic G move-last-line
+
+bind branch n !git checkout -b %(prompt) %(branch)
+
+bind generic ^ !git reset --soft HEAD^
+
+bind main I ?git rebase -i %(branch)
