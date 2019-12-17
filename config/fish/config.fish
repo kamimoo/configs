@@ -40,3 +40,8 @@ if test -x $HOME/go
 	set -x GOPATH $HOME/go
 	set -x PATH $PATH $GOPATH/bin
 end
+
+# Python3
+if test -x $HOME/Library/Python/3.7/bin/pip
+	set -x PATH $PATH $HOME/Library/Python/3.7/bin
+end
