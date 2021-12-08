@@ -15,6 +15,8 @@ set diff-view = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
 set refresh-mode = auto
 
+set log-options = --pretty=format:'%C(green)commit %H%C(reset)%n%C(cyan)Author: %an <%ae>%C(reset)%n%C(cyan)Commiter: %cn <%ce>%C(reset)%n%C(yellow)Author Date: %ai%n%C(ul yellow)Commit Date: %ci%C(reset)%nSigned: %G?%n%n%C(white)  %s%C(reset)%n%b'
+
 bind generic G none
 bind generic g move-first-line
 bind generic G move-last-line
@@ -23,4 +25,8 @@ bind branch n !git checkout -b %(prompt) %(branch)
 
 bind generic ^ !git reset --soft HEAD^
 
-bind main I ?git rebase -i %(branch)
+bind main B ?git rebase -i %(commit)
+bind main T !@git tag %(prompt) %(commit)
+bind main <C-B> ?git rebase --committer-date-is-author-date %(commit)
+
+bind status  C  !git cz
