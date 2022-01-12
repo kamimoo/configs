@@ -1,3 +1,4 @@
 EXCLUDES="dot.vim"
 UNDOTTED="screen-256color.terminfo"
+SYMLINK_DIRS="config"
 
