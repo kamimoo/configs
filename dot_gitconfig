@@ -14,5 +14,9 @@
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	first = commit --allow-empty -m \":tada: Initial commit\"
+	fixit = "!git commit --amend --no-edit"
 [init]
 	defaultBranch = main
+[user]
+	email = kamimoo@gmail.com
+	name = Ryo Kamimura
