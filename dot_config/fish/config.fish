@@ -38,13 +38,13 @@ end
 
 # Java on Android Studio
 
-if test -e /Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
-	set -x PATH $PATH /Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/bin
-	set -x JAVA_HOME /Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home
+if test -e /Applications/Android\ Studio.app/Contents/jbr/Contents/Home
+	set -x PATH $PATH /Applications/Android\ Studio.app/Contents/jbr/Contents/Home/bin
+	set -x JAVA_HOME /Applications/Android\ Studio.app/Contents/jbr/Contents/Home
 end
 
 # asdf
-source (brew --prefix asdf)/asdf.fish
+source (brew --prefix asdf)/libexec/asdf.fish
 
 # alias
 alias g git
@@ -52,7 +52,15 @@ alias g git
 # GitHub CLI
 eval (gh completion -s fish| source)
 
+# Enable AWS CLI autocompletion: github.com/aws/aws-cli/issues/1079
+complete --command aws --no-files --arguments '(begin; set --local --export COMP_SHELL fish; set --local --export COMP_LINE (commandline); aws_completer | sed \'s/ $//\'; end)'
+
+
 
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
+
+# gcloud
+source "/opt/homebrew/share/google-cloud-sdk/path.fish.inc"
+
